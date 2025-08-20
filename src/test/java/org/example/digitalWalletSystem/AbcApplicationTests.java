@@ -1,4 +1,4 @@
-package org.example.abc;
+package org.example.digitalWalletSystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

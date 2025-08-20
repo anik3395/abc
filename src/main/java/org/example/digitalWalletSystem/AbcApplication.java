@@ -1,4 +1,4 @@
-package org.example.abc;
+package org.example.digitalWalletSystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
