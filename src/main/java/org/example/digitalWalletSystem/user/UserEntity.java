@@ -32,6 +32,8 @@ public class UserEntity implements UserDetails {
 
     private UserRole role;
 
+    private boolean enabled;
+
 
     @Override
     public String getUsername() {
