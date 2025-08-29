@@ -3,11 +3,11 @@ package org.example.digitalWalletSystem.auth;
 import lombok.RequiredArgsConstructor;
 import org.example.digitalWalletSystem.auth.model.AuthResponse;
 import org.example.digitalWalletSystem.auth.model.RegisterRequest;
+import org.example.digitalWalletSystem.exceptions.InvalidDataException;
 import org.example.digitalWalletSystem.token.JwtService;
 import org.example.digitalWalletSystem.user.UserEntity;
 import org.example.digitalWalletSystem.user.UserRepository;
 import org.example.digitalWalletSystem.user.UserRole;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ public class AuthService {
 
     public AuthResponse signUpAsAdmin(RegisterRequest registerRequest) {
         if (userRepository.findByEmail(registerRequest.email()).isPresent()) {
-            throw new RuntimeException("Email already in use");
+            throw new InvalidDataException("Email already in use");
         }
 
         UserEntity user = UserEntity.builder()

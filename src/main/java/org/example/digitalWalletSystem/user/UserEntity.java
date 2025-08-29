@@ -1,9 +1,6 @@
 package org.example.digitalWalletSystem.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,8 +27,8 @@ public class UserEntity implements UserDetails {
 
     private String password;
 
+    @Enumerated(EnumType.STRING)
     private UserRole role;
-
 
 
     @Override
