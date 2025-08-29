@@ -3,6 +3,7 @@ package org.example.digitalWalletSystem.user;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -31,38 +32,34 @@ public class UserEntity implements UserDetails {
     private UserRole role;
 
 
-    @Override
-    public String getUsername() {
-        return "";
-    }
-
-    @Override
-    public String getPassword() {
-        return "";
-    }
-
+    // ✅ UserDetails methods
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
+    }
+
+    @Override
+    public String getUsername() {
+        return email; // Spring Security uses this to authenticate
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
+        return true; // or implement your logic
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
+        return true; // or implement your logic
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
+        return true; // or implement your logic
     }
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return true; // or implement your logic
     }
 }
