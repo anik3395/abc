@@ -1,4 +1,4 @@
 package org.example.digitalWalletSystem.user;
 
-public class UserProfileRepository {
+public class UserService {
 }

@@ -1,4 +1,4 @@
 package org.example.digitalWalletSystem.user;
 
-public class UserProfile {
+public class UserController {
 }
