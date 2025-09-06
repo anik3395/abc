@@ -1,11 +1,12 @@
 package org.example.digitalWalletSystem.token;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
-import org.example.digitalWalletSystem.user.UserEntity;
+import org.example.digitalWalletSystem.user.userentity.UserEntity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +49,20 @@ public class JwtService {
 
     public String extractRole(String token) {
         return getClaims(token).get("role", String.class);
+    }
+
+
+    public boolean isTokenValid(String token, UserEntity user) {
+        try {
+            return extractUsername(token).equals(user.getEmail()) &&
+                    !isTokenExpired(token);
+        } catch (JwtException | IllegalArgumentException e) {
+            return false; // Invalid token
+        }
+    }
+
+    private boolean isTokenExpired(String token) {
+        return getClaims(token).getExpiration().before(new Date());
     }
 
 

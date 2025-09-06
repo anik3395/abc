@@ -1,4 +1,4 @@
-package org.example.digitalWalletSystem.user;
+package org.example.digitalWalletSystem.user.userprofile;
 
 import lombok.RequiredArgsConstructor;
 import org.example.digitalWalletSystem.common.response.ApiResponse;

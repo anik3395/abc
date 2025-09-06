@@ -1,8 +1,10 @@
-package org.example.digitalWalletSystem.user;
+package org.example.digitalWalletSystem.user.userprofile;
 
 import lombok.RequiredArgsConstructor;
 import org.example.digitalWalletSystem.common.response.ApiResponse;
 import org.example.digitalWalletSystem.exceptions.InvalidDataException;
+import org.example.digitalWalletSystem.user.userentity.UserEntity;
+import org.example.digitalWalletSystem.user.userentity.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

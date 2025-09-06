@@ -1,4 +1,4 @@
-package org.example.digitalWalletSystem.user;
+package org.example.digitalWalletSystem.user.userprofile;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,7 +1,8 @@
-package org.example.digitalWalletSystem.user;
+package org.example.digitalWalletSystem.user.userentity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.digitalWalletSystem.user.userprofile.UserProfile;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,6 +31,9 @@ public class UserEntity implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private UserProfile userProfile;
 
 
     // ✅ UserDetails methods
