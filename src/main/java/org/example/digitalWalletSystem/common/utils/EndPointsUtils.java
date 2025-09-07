@@ -19,7 +19,7 @@ public class EndPointsUtils {
 
     //Brand
     public static final String CREATE_BRAND = "/api/v1/public/create/brand";
-    public static final String FETCH_ALL_BRAND = "/api/auth/fetch/brand";
+    public static final String FETCH_ALL_BRAND = "/api/v1/public/fetch/brand";
     public static final String UPDATE_BRAND = "/api/auth/update/brand";
     public static final String DELETE_BRAND = "/api/auth/delete/brand";
 

@@ -4,14 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.example.digitalWalletSystem.brandcetagoryproduct.brand.model.BrandReqModel;
 import org.example.digitalWalletSystem.common.SecurityConfig;
 import org.example.digitalWalletSystem.common.response.ApiResponse;
+import org.example.digitalWalletSystem.common.status.KhenaBechaStatus;
 import org.example.digitalWalletSystem.common.utils.EndPointsUtils;
 import org.example.digitalWalletSystem.user.userentity.UserEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,4 +22,15 @@ public class BrandController {
         UserEntity currentUser = SecurityConfig.getCurrentUser();
         return new ResponseEntity<>(brandService.createBrand(brandReqModel,currentUser), HttpStatus.CREATED);
     }
+
+    @GetMapping(value = EndPointsUtils.FETCH_ALL_BRAND)
+    public ResponseEntity<ApiResponse> fetchAllBrand(@RequestParam (required = false) String name,
+                                                     @RequestParam (required = false) KhenaBechaStatus status,
+                                                     @RequestParam (required = false,defaultValue = "0") Integer page,
+                                                     @RequestParam (required = false,defaultValue = "10") Integer size) {
+        ApiResponse response = brandService.fetchAllBrand(name,status,page,size);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+
 }
