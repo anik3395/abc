@@ -1,15 +1,13 @@
-package org.example.digitalWalletSystem.brandcetagoryproduct.brand;
+package org.example.digitalWalletSystem.brandcetagoryproduct.category;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.example.digitalWalletSystem.common.status.KhenaBechaStatus;
 import org.example.digitalWalletSystem.user.userentity.UserEntity;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.time.LocalDateTime;
 
@@ -17,8 +15,10 @@ import java.time.LocalDateTime;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
-public class Brand {
+public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,8 +27,6 @@ public class Brand {
 
     private String description;
 
-    private String country;
-
     @Enumerated(EnumType.STRING)
     private KhenaBechaStatus status;
 
@@ -36,6 +34,8 @@ public class Brand {
     @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
     private UserEntity user;
+
+    private long brandId;
 
     @CreationTimestamp
     private LocalDateTime createdAt;

@@ -2,7 +2,7 @@ package org.example.digitalWalletSystem.brandcetagoryproduct.brand;
 
 import lombok.RequiredArgsConstructor;
 import org.example.digitalWalletSystem.brandcetagoryproduct.brand.model.BrandReqModel;
-import org.example.digitalWalletSystem.common.SecurityConfig;
+import org.example.digitalWalletSystem.common.security.SecurityConfig;
 import org.example.digitalWalletSystem.common.pagination.ResponseUtils;
 import org.example.digitalWalletSystem.common.response.ApiResponse;
 import org.example.digitalWalletSystem.common.specification.BrandSpecification;
@@ -13,11 +13,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +26,10 @@ public class BrandService {
         Brand existingBrand = brandRepository.findByName(brandReqModel.name());
         if (existingBrand != null) {
             throw new InvalidDataException("Brand with name " + brandReqModel.name() + " already exists");
+        }
+
+        if(brandReqModel.status().equals(KhenaBechaStatus.ARCHIVED)){
+            throw new InvalidDataException("For creation of brand,ARCHIVED is not possible");
         }
 
         Brand brand = new Brand();

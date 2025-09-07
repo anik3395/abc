@@ -1,4 +1,4 @@
-package org.example.digitalWalletSystem.common;
+package org.example.digitalWalletSystem.common.security;
 
 import lombok.RequiredArgsConstructor;
 import org.example.digitalWalletSystem.token.JwtAuthFilter;

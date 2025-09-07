@@ -2,14 +2,13 @@ package org.example.digitalWalletSystem.brandcetagoryproduct.brand;
 
 import lombok.RequiredArgsConstructor;
 import org.example.digitalWalletSystem.brandcetagoryproduct.brand.model.BrandReqModel;
-import org.example.digitalWalletSystem.common.SecurityConfig;
+import org.example.digitalWalletSystem.common.security.SecurityConfig;
 import org.example.digitalWalletSystem.common.response.ApiResponse;
 import org.example.digitalWalletSystem.common.status.KhenaBechaStatus;
 import org.example.digitalWalletSystem.common.utils.EndPointsUtils;
 import org.example.digitalWalletSystem.user.userentity.UserEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
